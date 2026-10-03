@@ -9,15 +9,24 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "node --watch src/index.ts",
-    "prestart": "npm run build"
+    "dev": "node --watch src/index.js",
+    "prestart": "npm run build",
+    "migrate": "node-pg-migrate --envPath .env --migrations-dir migrations",
+    "migrate:up": "node-pg-migrate up --envPath .env --migrations-dir migrations",
+    "migrate:down": "node-pg-migrate down --envPath .env --migrations-dir migrations"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "@spotify/web-api-ts-sdk": "^1.2.0",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "jose": "^6.2.12",
+    "node-pg-migrate": "^9.0.0",
+    "pg": "^8.23.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.4",
+    "@types/pg": "^8.23.1",
     "typescript": "^7.0.2"
   }
 }
